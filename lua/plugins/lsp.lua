@@ -102,7 +102,7 @@ return {
         -- 【追加】SourceKit-LSP（Swift）固有の設定
         -- 共通の M.capabilities に、記事にあった監視ファイルや診断の設定を安全にマージして適用するっす！
         vim.lsp.config("sourcekit", {
-            cmd = { "sourcekit-lsp" },
+            cmd = { "xcrun", "sourcekit-lsp" },
             filetypes = { "swift" },
             root_markers = {
                 ".git",

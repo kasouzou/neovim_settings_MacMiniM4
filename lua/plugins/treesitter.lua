@@ -1,7 +1,12 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    branch = "main",
+    -- Use the default branch 'master' (the previous 'main' branch does not exist)
+    branch = "master",
     build = ":TSUpdate",
+    -- Load treesitter lazily when a buffer is read (prevents config from running before the plugin is fully loaded)
+    event = { "BufReadPost", "BufNewFile" },
+    -- Also make the TS* commands available without having to open a buffer first
+    cmd = { "TSInstall", "TSUpdateSync", "TSInstallInfo" },
     config = function()
         require("nvim-treesitter.configs").setup({
             -- Install parsers for common languages
